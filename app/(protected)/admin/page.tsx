@@ -1,7 +1,7 @@
 "use client";
 import { admin } from "@/actions/admin";
 import RoleGate from "@/components/auth/RoleGate";
-import FormSuccess from "@/components/FormSuccess";
+import FormSuccess from "@/components/form/FormSuccess";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { UserRole } from "@prisma/client";

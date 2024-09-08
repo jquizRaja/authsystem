@@ -16,8 +16,8 @@ import {
 import { RegisterSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import FormError from "../FormError";
-import FormSuccess from "../FormSuccess";
+import FormError from "../form/FormError";
+import FormSuccess from "../form/FormSuccess";
 import { register } from "@/actions/register";
 
 const RegisterForm = () => {
@@ -29,7 +29,7 @@ const RegisterForm = () => {
     defaultValues: {
       email: "",
       password: "",
-      name:"",
+      name: "",
     },
   });
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {

@@ -40,12 +40,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return true;
     },
-    async session({ token, session }) {
+    async session({ token, session}) {
       if (token.sub && session.user) {
-        // mene yaha change kiya ha userId ko user.id
         session.user.id = token.sub;
-        //add this line here because i had changed as described above on line 45
-        // session.userId = token.sub;
       }
       if (token.role && session.user) {
         session.user.role = token.role;
@@ -60,7 +57,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return session;
     },
-    async jwt({ token }) {
+    async jwt({ token}) {
       if (!token.sub) return token;
 
       const exisitingUser = await getUserById(token.sub);

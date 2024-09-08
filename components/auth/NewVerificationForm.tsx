@@ -5,10 +5,12 @@ import CardWrapper from "./CardWrapper";
 import { RiseLoader } from "react-spinners";
 import { useCallback, useEffect, useState } from "react";
 import { newVerification } from "@/actions/new-verification";
-import FormError from "../FormError";
-import FormSuccess from "../FormSuccess";
+import FormError from "../form/FormError";
+import FormSuccess from "../form/FormSuccess";
+import { useRouter } from "next/navigation";
 
 const NewVerificationForm = () => {
+  const router = useRouter();
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
   const searchParams = useSearchParams();
@@ -23,12 +25,13 @@ const NewVerificationForm = () => {
     newVerification(token)
       .then((data) => {
         setSuccess(data?.success);
+        router.push("/login");
         setError(data?.error);
       })
       .catch(() => {
         setError("Something Went Wrong!");
       });
-  }, [token]);
+  }, [token, router]);
   useEffect(() => {
     onSubmit();
   }, [onSubmit]);
@@ -39,9 +42,7 @@ const NewVerificationForm = () => {
       backButtonHref="/login"
     >
       <div className="flex items-center w-full justify-center">
-        {!success && !error &&(
-        <RiseLoader />
-        )}
+        {!success && !error && <RiseLoader />}
         <FormError message={error} />
         <FormSuccess message={success} />
       </div>

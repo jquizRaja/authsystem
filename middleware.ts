@@ -6,7 +6,6 @@ import {
   authRoutes,
   apiAuthPrefix,
 } from "./route";
-import { NextResponse } from "next/server";
 
 const { auth } = NextAuth(authConfig);
 // @ts-ignore

@@ -16,14 +16,14 @@ import {
 import { NewPasswordSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import FormError from "../FormError";
-import FormSuccess from "../FormSuccess";
+import FormError from "../form/FormError";
+import FormSuccess from "../form/FormSuccess";
 import { useSearchParams } from "next/navigation";
 import { newPassword } from "@/actions/new-password";
 
 const NewPasswordForm = () => {
-  const searchParams=useSearchParams()
-  const token= searchParams.get("token")
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
 
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -39,7 +39,7 @@ const NewPasswordForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      newPassword(values,token).then((data) => {
+      newPassword(values, token).then((data) => {
         setError(data?.error);
         setSuccess(data?.success);
       });
@@ -72,7 +72,6 @@ const NewPasswordForm = () => {
                 </FormItem>
               )}
             />
-
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />

@@ -16,8 +16,8 @@ import {
 import { ResetSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import FormError from "../FormError";
-import FormSuccess from "../FormSuccess";
+import FormError from "../form/FormError";
+import FormSuccess from "../form/FormSuccess";
 import { reset } from "@/actions/reset";
 
 const ResetForm = () => {
@@ -68,7 +68,6 @@ const ResetForm = () => {
                 </FormItem>
               )}
             />
-
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />

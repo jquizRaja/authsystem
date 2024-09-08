@@ -26,7 +26,7 @@ const UserBtn = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="end">
         <LogoutBtn>
-          <DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer">
             <GiExitDoor className="w-4 h-4 mr-2"/>
             Logout
           </DropdownMenuItem>

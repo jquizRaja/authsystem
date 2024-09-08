@@ -1,5 +1,6 @@
 "use client"
 import UserBtn from '@/components/auth/UserBtn';
+import { ModeToggle } from '@/components/theme/ModeToggle';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -10,10 +11,7 @@ const Navbar = () => {
   return (
     <nav className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[600px] shadow-md">
       <div className="flex gap-x-2">
-        <Button
-          variant={pathname === "/admin" ? "default" : "outline"}
-          asChild
-        >
+        <Button variant={pathname === "/admin" ? "default" : "outline"} asChild>
           <Link href="/admin">Admin</Link>
         </Button>
         <Button
@@ -32,10 +30,14 @@ const Navbar = () => {
           variant={pathname === "/settings" ? "default" : "outline"}
           asChild
         >
-          <Link href="/settings">Settings</Link>
+        <Link href="/settings">Settings</Link>
         </Button>
+        <Button variant={pathname === "/admin" ? "default" : "outline"} asChild>
+          <Link href="/dashboard">Dashboard</Link>
+        </Button>
+        <ModeToggle/>
       </div>
-        <UserBtn/>
+      <UserBtn />
     </nav>
   );
 }

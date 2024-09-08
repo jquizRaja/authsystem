@@ -1,7 +1,5 @@
 "use client"
 
-
-
 interface HeaderProps{
   label:string,
 }

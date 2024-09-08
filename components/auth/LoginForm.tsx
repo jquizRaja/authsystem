@@ -16,15 +16,15 @@ import {
 import { LoginSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import FormError from "../FormError";
-import FormSuccess from "../FormSuccess";
+import FormError from "../form/FormError";
+import FormSuccess from "../form/FormSuccess";
 import { login } from "@/actions/login";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 const LoginForm = () => {
   const searchParams = useSearchParams();
-  const callbackUrl=searchParams.get("callbackUrl")
+  const callbackUrl = searchParams.get("callbackUrl");
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Same Email is Already used by Other Provider!"
@@ -46,7 +46,7 @@ const LoginForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      login(values,callbackUrl)
+      login(values, callbackUrl)
         .then((data) => {
           if (data?.error) {
             form.reset();
@@ -144,7 +144,7 @@ const LoginForm = () => {
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <Button disabled={isPending} className="w-full" type="submit">
-            {showTwoFactor?"Confirm":"Login"}
+            {showTwoFactor ? "Confirm" : "Login"}
           </Button>
         </form>
       </Form>
