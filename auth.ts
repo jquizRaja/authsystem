@@ -40,7 +40,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return true;
     },
-    async session({ token, session}) {
+    async session({ token, session }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
@@ -57,7 +57,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return session;
     },
-    async jwt({ token}) {
+    async jwt({ token }) {
       if (!token.sub) return token;
 
       const exisitingUser = await getUserById(token.sub);

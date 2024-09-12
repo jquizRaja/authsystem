@@ -37,6 +37,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { GiNurseFemale } from "react-icons/gi";
+import { ResizablePage } from "../main/Resizeable";
+import { MusicTabs } from "./MusicTabs";
 
 export const description =
   "A products dashboard with a sidebar navigation and a main content area. The dashboard has a header with a search input and a user menu. The sidebar has a logo, navigation links, and a card with a call to action. The main content area shows an empty state with a call to action.";
@@ -85,7 +87,7 @@ export function MusicBlock() {
                 Radio
               </Link>
               <Link
-                href="/music/myfavourite"
+                href="/listennow/myfavourite"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Star className="h-4 w-4" />
@@ -238,10 +240,12 @@ export function MusicBlock() {
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
+        <MusicTabs/>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           <div className="flex items-center">
+            <ResizablePage/>
           </div>
-          <div
+          {/* <div
             className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
             x-chunk="dashboard-02-chunk-1"
           >
@@ -256,7 +260,7 @@ export function MusicBlock() {
                 <Link href="/music/addsong">Add Song</Link>
               </Button>
             </div>
-          </div>
+          </div> */}
         </main>
       </div>
     </div>
